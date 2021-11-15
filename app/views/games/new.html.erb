@@ -1,0 +1,17 @@
+<h1>Your letters:</h1>
+
+ <div class="row">
+  <%@letters.each do |letter| %>
+  <div class="column"><%= letter %></div>
+  <% end %>
+</div>
+
+<form action="/score" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="text" name="input" id="input" placeholder="Your best guess?">
+  <input type="hidden" name="letters" value=<%="#{@letters.join}"%>>
+  <input type="submit" value="Validate" id="submit">
+</form>
+
+<br><br>
+<%= link_to "Score", "score" %>
